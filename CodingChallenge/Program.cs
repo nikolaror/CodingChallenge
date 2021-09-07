@@ -37,9 +37,10 @@ namespace CodingChallenge
         private static Stack<Interval> Merge(IList<Interval> intervals)
         {
             //order intervals by start, because End will be compared with next element's Start
-            var sortedIntervals = intervals.ToList();
-            sortedIntervals.Sort(new CustomComparer());
-
+            var sortedIntervals = intervals.ToArray();
+            //sortedIntervals.Sort(new CustomComparer());
+            Array.Sort(sortedIntervals, new CustomComparer());
+            
             var stack = new Stack<Interval>();
             //push first element, in order to skip tryPeek
             stack.Push(sortedIntervals.First());
